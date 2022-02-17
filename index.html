@@ -43,7 +43,7 @@
         }
 
         body {
-            background: #bcdee7 url("https://blogger.googleusercontent.com/img/a/AVvXsEgxNEb_Ze0tqInkWdtJ4Hwefz8ZomBtBRcbBK3vBtbto9chWm6D3pvar6mE4SwKHyI0K8ckKYa4Y2NcO3LkRWLj_voXjRJ_pAO4npwwfiPQ5LDCQtSLcd0FvNZ5-ylBScfpBKZ2JMc9AElQS1f-U-uEkAct3jmF7D8JurH3BqJcgXghjVJLmGI1jSgKcQ=s2560") no-repeat center center fixed;
+            background: #6fa9c1 url("https://blogger.googleusercontent.com/img/a/AVvXsEgxNEb_Ze0tqInkWdtJ4Hwefz8ZomBtBRcbBK3vBtbto9chWm6D3pvar6mE4SwKHyI0K8ckKYa4Y2NcO3LkRWLj_voXjRJ_pAO4npwwfiPQ5LDCQtSLcd0FvNZ5-ylBScfpBKZ2JMc9AElQS1f-U-uEkAct3jmF7D8JurH3BqJcgXghjVJLmGI1jSgKcQ=s2560") no-repeat center center fixed;
             background-size: 120% auto;
             position: fixed;
             padding: 0px;
@@ -52,6 +52,27 @@
             height: 100%;
             font: normal 14px/1.618em "Roboto", sans-serif;
             -webkit-font-smoothing: antialiased;
+            -webkit-background-size: auto 100%;
+            -moz-background-size: auto 100%;
+            -o-background-size: auto 100%;
+            background-size: auto 100%;
+        }
+
+        @media only screen and (orientation:portrait) {
+            #wrapper {
+                display: none;
+            }
+
+            #warning-message {
+                display: block;
+                color: white;
+            }
+
+            html {
+                background: url("https://blogger.googleusercontent.com/img/a/AVvXsEgxNEb_Ze0tqInkWdtJ4Hwefz8ZomBtBRcbBK3vBtbto9chWm6D3pvar6mE4SwKHyI0K8ckKYa4Y2NcO3LkRWLj_voXjRJ_pAO4npwwfiPQ5LDCQtSLcd0FvNZ5-ylBScfpBKZ2JMc9AElQS1f-U-uEkAct3jmF7D8JurH3BqJcgXghjVJLmGI1jSgKcQ=s2560") no-repeat center center fixed;
+                background-size: cover;
+                height: 100%;
+            }
         }
 
         body:before {
@@ -656,8 +677,10 @@
         <header>
 
             <!-- here’s the avatar -->
-            <a href="https://blogger.googleusercontent.com/img/a/AVvXsEgDEvCCM_vfAZT3SBTtqm1tAUdh-kV989MPt-C83U4r77ObiPglQKr0Ho2NE3tpFNBec-8Vbtywu2E622baEvM954fVvRWfuzgwoD8_FLLvhAl4jWXDJwTUnJs5mEWH5jA0vlFwXy0ZLF8IUK8XGrDnDxrF5EWzEaLHqOASulz-W6n_eE-JUhYJLDOuNg=s16000">
-                <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgDEvCCM_vfAZT3SBTtqm1tAUdh-kV989MPt-C83U4r77ObiPglQKr0Ho2NE3tpFNBec-8Vbtywu2E622baEvM954fVvRWfuzgwoD8_FLLvhAl4jWXDJwTUnJs5mEWH5jA0vlFwXy0ZLF8IUK8XGrDnDxrF5EWzEaLHqOASulz-W6n_eE-JUhYJLDOuNg=s16000" />
+            <a
+                href="https://blogger.googleusercontent.com/img/a/AVvXsEgDEvCCM_vfAZT3SBTtqm1tAUdh-kV989MPt-C83U4r77ObiPglQKr0Ho2NE3tpFNBec-8Vbtywu2E622baEvM954fVvRWfuzgwoD8_FLLvhAl4jWXDJwTUnJs5mEWH5jA0vlFwXy0ZLF8IUK8XGrDnDxrF5EWzEaLHqOASulz-W6n_eE-JUhYJLDOuNg=s16000">
+                <img
+                    src="https://blogger.googleusercontent.com/img/a/AVvXsEgDEvCCM_vfAZT3SBTtqm1tAUdh-kV989MPt-C83U4r77ObiPglQKr0Ho2NE3tpFNBec-8Vbtywu2E622baEvM954fVvRWfuzgwoD8_FLLvhAl4jWXDJwTUnJs5mEWH5jA0vlFwXy0ZLF8IUK8XGrDnDxrF5EWzEaLHqOASulz-W6n_eE-JUhYJLDOuNg=s16000" />
             </a>
 
             <!-- the username -->
@@ -701,7 +724,8 @@
             <!-- envato – use this one to link to your marketplace profile -->
             <li>
                 <a target="_blank" href="https://github.com/triyuliantoo">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyp_S4DvbnksnTwAGvVZ4rikng_wHyk5YtlmLS0nyzF5I19fc9R0WkhB9lsWIs1Sm39A0&usqp=CAU#svgView(viewBox(0,0,100,100))">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyp_S4DvbnksnTwAGvVZ4rikng_wHyk5YtlmLS0nyzF5I19fc9R0WkhB9lsWIs1Sm39A0&usqp=CAU#svgView(viewBox(0,0,100,100))">
                 </a>
             </li>
 
