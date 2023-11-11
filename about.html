@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Branding - Tri Yulianto</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="overlay"></div>
+    <header>
+        <button id="menuToggle" class="icon-button"><i class="fas fa-bars"></i></button>
+        <button id="themeToggle" class="icon-button"><i class="fas fa-moon"></i></button>
+    </header>
+    <nav id="drawerMenu" class="drawer-menu">
+        <button id="closeDrawer" class="icon-button"><i class="fas fa-times"></i></button>
+        <a href="#aboutMe"><i class="material-icons">person</i>About Me</a>
+        <a href="#portfolio"><i class="material-icons">work</i>Portfolio</a>
+        <a href="#workHistory"><i class="material-icons">history</i>Riwayat Profesional</a>
+        <a href="#index"><i class="material-icons">history</i>Back</a>
+        <a href="index.html" id="backToIndex"><i class="material-icons">home</i>Back to Home</a>
+    </nav>
+
+    <main>
+        <section id="aboutMe">
+            <h2>About Me</h2>
+            <p>Hi, saya Tri Yulianto, seorang programmer di Core Banking Mandiri Persero. Saya bekerja di bidang
+                teknologi informasi, khususnya pengembangan perangkat lunak. Saya adalah alumnus UIN Bandung, dengan
+                latar belakang pendidikan di bidang ilmu komputer.</p>
+        </section>
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="carousel">
+                <div class="carousel-item" onclick="showModal(1)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(2)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(3)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(4)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(5)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(6)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(7)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(8)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(9)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+1" alt="Project 1">
+                </div>
+                <div class="carousel-item" onclick="showModal(10)">
+                    <img src="https://via.placeholder.com/600x400.png?text=Project+10" alt="Project 10">
+                </div>
+            </div>
+        </section>
+        <section id="workHistory">
+            <h2>Riwayat Profesional</h2>
+            <ul>
+                <li>2023 - Sekarang: Senior Developer at Tech Innovations Inc.</li>
+                <li>2010 - 2012: Programmer at Startup Hub</li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Project Details</h3>
+            <p id="modalContent">Project details will be shown here when a project is clicked.</p>
+        </div>
+    </div>
+
+    <button id="backToTop" class="icon-button"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
