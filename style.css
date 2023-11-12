@@ -31,7 +31,6 @@ header {
     align-items: center;
     padding: 10px;
     width: 100%;
-    /* This should be 100% to ensure it stretches full width */
     position: fixed;
     top: 0;
     left: 0;
@@ -40,11 +39,17 @@ header {
     box-sizing: border-box;
 }
 
+header,
+main {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
 /* Inner wrapper for header content to match the main content width */
 .header-inner {
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    /* This centers the header content */
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -66,8 +71,9 @@ header:not(.scrolled) {
 }
 
 main {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     padding-top: calc(var(--header-height) + 10px);
-    /* or more if needed */
     padding-right: 20px;
     padding-left: 20px;
     max-width: 1200px;
@@ -76,7 +82,7 @@ main {
 
 @media (max-width: 768px) {
     header {
-        padding: 10px;
+        padding: 5px;
     }
 
     .drawer-menu {
@@ -84,7 +90,42 @@ main {
     }
 
     main {
-        padding-top: calc(60px);
+        padding: 5px;
+        padding-top: 55px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        font-size: smaller;
+    }
+
+    .icon-button {
+        font-size: 20px;
+    }
+
+    /* Adjust the carousel for smaller screens */
+    .carousel-item {
+        width: 90%;
+    }
+
+    .timeline-event {
+        padding-left: 25px;
+    }
+
+    .timeline-event-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .timeline-event-content {
+        margin-left: 5px;
     }
 }
 
@@ -155,6 +196,15 @@ html {
     margin-right: 16px;
     scroll-snap-align: start;
     cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.carousel-item img {
+    width: 100%;
 }
 
 .modal {
@@ -259,19 +309,93 @@ html {
 
 #overlay {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Fixed position */
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background */
     z-index: 999;
-    /* Below the drawer, but above everything else */
+}
+
+.timeline {
+    list-style: none;
+    padding: 0;
+}
+
+.timeline-event {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 20px;
+}
+
+.timeline-event-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+.timeline-event-content {
+    padding: 10px;
+    border-left: 3px solid var(--primary-color);
+    margin-left: 10px;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+body {
+    background-color: #fff;
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.loading-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.loading-text::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0));
+    animation: lightShine 3s ease-in-out infinite;
+}
+
+@keyframes lightShine {
+    0% {
+        left: -150%;
+    }
+
+    50% {
+        left: -25%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }

@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Branding - Tri Yulianto</title>
+    <meta content='Seandainya fountain hook masih bisa..' name='description' />
+    <meta content='Tri Yulianto' name='keywords' />
+    <meta content='Tri Yulianto' property='og:site_name' />
+    <meta content='https://triyuliantoo.github.io/' name='twitter:domain' />
+    <meta content='https://twitter.com/triyuliantoo' name='twitter:title' />
+    <meta content='summary' name='twitter:card' />
+    <meta content='Tri Yulianto' name='twitter:title' />
+    <meta content='https://triyuliantoo.blogspot.com/' property='og:url' />
+
+    <link
+        href='https://blogger.googleusercontent.com/img/a/AVvXsEgDEvCCM_vfAZT3SBTtqm1tAUdh-kV989MPt-C83U4r77ObiPglQKr0Ho2NE3tpFNBec-8Vbtywu2E622baEvM954fVvRWfuzgwoD8_FLLvhAl4jWXDJwTUnJs5mEWH5jA0vlFwXy0ZLF8IUK8XGrDnDxrF5EWzEaLHqOASulz-W6n_eE-JUhYJLDOuNg=s16000'
+        rel='icon' type='image/x-icon' />
+    <link href='https://triyuliantoo.blogspot.com/' rel='canonical' />
+    <link rel="me" href="https://www.blogger.com/profile/13375513638079729843" />
+
+    <title>Tri Yulianto</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
+    <div class="loading-text">Tri Yulianto</div>
     <div id="overlay"></div>
     <header>
         <button id="menuToggle" class="icon-button"><i class="fas fa-bars"></i></button>
@@ -19,16 +37,66 @@
         <a href="#aboutMe"><i class="material-icons">person</i>About Me</a>
         <a href="#portfolio"><i class="material-icons">work</i>Portfolio</a>
         <a href="#workHistory"><i class="material-icons">history</i>Riwayat Profesional</a>
-        <a href="#index"><i class="material-icons">history</i>Back</a>
-        <a href="index.html" id="backToIndex"><i class="material-icons">home</i>Back to Home</a>
+        <a href="index.html" id="backToIndex"><i class="material-icons">logout</i>Back to Home</a>
     </nav>
 
     <main>
         <section id="aboutMe">
             <h2>About Me</h2>
-            <p>Hi, saya Tri Yulianto, seorang programmer di Core Banking Mandiri Persero. Saya bekerja di bidang
-                teknologi informasi, khususnya pengembangan perangkat lunak. Saya adalah alumnus UIN Bandung, dengan
-                latar belakang pendidikan di bidang ilmu komputer.</p>
+            <p>Hi, my name is Tri. I am currently working as software engineer at Bank Mandiri, Indonesia.</p>
+        </section>
+        <section id="workHistory">
+            <h2>Work Experience</h2>
+            <ul class="timeline">
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">July 2023 - Now</p>
+                        <h3>Software Engineer at PT. Bank Mandiri (Persero) Tbk.</h3>
+                        <p>Working on XLS team for core banking.</p>
+                    </div>
+                </li>
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">March 2023 - June 2023</p>
+                        <h3>Developer at Orang Tua Group</h3>
+                        <p>Working to develop an expedition retail invoice application.</p>
+                    </div>
+                </li>
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">March 2022 - February 2023</p>
+                        <h3>Credit and Asset Management Developer at NawaData Solutions</h3>
+                        <p>Develop ETL, report service and CMS Web</p>
+                    </div>
+                </li>
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">April 2021 - February 2022</p>
+                        <h3>.Net Developer at Cyber Blitz Nusantara</h3>
+                        <p>Develop HRIS Pertamina App named i-Am Talent</p>
+                    </div>
+                </li>
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">October 2020 - February 2021</p>
+                        <h3>Data Support at Pitjarus Technology</h3>
+                        <p>Supporting and maintain data for client</p>
+                    </div>
+                </li>
+                <li class="timeline-event">
+                    <label class="timeline-event-icon"></label>
+                    <div class="timeline-event-content">
+                        <p class="timeline-date">Juny 2020 - October 2020</p>
+                        <h3>.Net Developer at Ratu Pertiwi Group</h3>
+                        <p>Develop POS and ERP App</p>
+                    </div>
+                </li>
+            </ul>
         </section>
         <section id="portfolio">
             <h2>Portfolio</h2>
@@ -65,13 +133,6 @@
                 </div>
             </div>
         </section>
-        <section id="workHistory">
-            <h2>Riwayat Profesional</h2>
-            <ul>
-                <li>2023 - Sekarang: Senior Developer at Tech Innovations Inc.</li>
-                <li>2010 - 2012: Programmer at Startup Hub</li>
-            </ul>
-        </section>
     </main>
 
     <div id="portfolioModal" class="modal">
@@ -86,4 +147,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

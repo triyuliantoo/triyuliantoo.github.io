@@ -39,4 +39,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize header state
     toggleHeader();
+
+
+    // Wait for 3 seconds before hiding the loading text and showing content
+    setTimeout(function() {
+        const loadingText = document.querySelector('.loading-text');
+        if (loadingText) {
+            loadingText.style.display = 'none';
+        }
+        
+        // Fade in the header and main content
+        const header = document.querySelector('header');
+        const main = document.querySelector('main');
+        if (header && main) {
+            header.style.opacity = 1;
+            main.style.opacity = 1;
+        }
+    }, 3000);
+
 });
