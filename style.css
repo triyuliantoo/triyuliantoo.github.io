@@ -74,24 +74,33 @@ main {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     padding-top: calc(var(--header-height) + 10px);
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 5%;
+    padding-left: 5%;
     max-width: 1200px;
     margin: auto;
 }
 
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
-    header {
-        padding: 5px;
+    body {
+        padding: 0;
     }
 
-    .drawer-menu {
-        width: 200px;
+    header,
+    .header-inner,
+    main,
+    .drawer-menu,
+    .timeline-event-content {
+        padding: 0;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 10px;
     }
 
     main {
-        padding: 5px;
-        padding-top: 55px;
+        padding: 60px 10px 10px;
     }
 
     .header-inner {
@@ -103,29 +112,70 @@ main {
     h2,
     h3,
     p {
-        font-size: smaller;
+        font-size: 16px;
     }
 
     .icon-button {
         font-size: 20px;
     }
 
-    /* Adjust the carousel for smaller screens */
+    .carousel {
+        /* Jika Anda ingin mengatur lebar carousel di mobile, lakukan di sini */
+        width: 100%; /* Contoh, membuat carousel full width */
+    }
+
     .carousel-item {
-        width: 90%;
+        /* Ini akan memastikan semua item carousel memiliki tinggi yang sama di mobile */
+        height: 200px; /* atau tinggi yang diinginkan, pastikan sama dengan di atas */
+        width: auto; /* Ini akan memastikan lebar item menyesuaikan dengan lebar layar */
     }
 
-    .timeline-event {
-        padding-left: 25px;
+    .carousel-item img {
+        /* Pastikan gambar mengisi kontainer sepenuhnya */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
-    .timeline-event-icon {
-        width: 15px;
-        height: 15px;
+    .carousel-item:hover img {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+}
+
+@media (min-width: 769px) {
+    .carousel {
+        display: flex;
+        overflow-x: auto;
+        width: 620px; /* Total lebar dua item + margin */
     }
 
-    .timeline-event-content {
-        margin-left: 5px;
+    .carousel-item {
+        width: calc(50% - 4px);
+        height: 400px;
+        margin-right: 8px;
+        position: relative;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /* Pseudo-element for indicating more items to the right */
+    .carousel::after {
+        content: '>';
+        font-size: 24px;
+        color: #000;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        pointer-events: none;
     }
 }
 
@@ -187,24 +237,36 @@ html {
 
 .carousel {
     display: flex;
+    flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    gap: 16px;
 }
 
+/* Style untuk desktop dan viewport yang lebih besar */
 .carousel-item {
-    flex: 0 0 auto;
-    margin-right: 16px;
-    scroll-snap-align: start;
-    cursor: pointer;
+    /* Tetapkan tinggi yang konsisten untuk semua ukuran layar */
+    height: 200px; /* atau tinggi yang diinginkan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    /* Ini akan memastikan gambar menyesuaikan dengan kontainer tanpa kehilangan aspek rasio */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 'cover' akan memotong gambar untuk mengisi area */
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
 }
 
 img {
     max-width: 100%;
     height: auto;
-}
-
-.carousel-item img {
-    width: 100%;
 }
 
 .modal {
@@ -298,15 +360,6 @@ img {
     color: #000;
 }
 
-.carousel::-webkit-scrollbar {
-    display: none;
-}
-
-.carousel {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
 #overlay {
     display: none;
     position: fixed;
@@ -364,16 +417,18 @@ body {
 
 
 .loading-text {
-    font-size: 18px;
-    font-weight: bold;
-    color: #000;
-    display: block;
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 9999;
 }
 
+/* This class should be added to the body tag when the loading text is visible */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
 
 .loading-text::before {
     content: '';

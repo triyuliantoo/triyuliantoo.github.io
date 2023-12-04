@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Add no-scroll class to prevent scrolling during loading
+    document.body.classList.add('no-scroll');
+
     const drawer = document.getElementById('drawerMenu');
     const closeDrawerButton = document.getElementById('closeDrawer');
     const overlay = document.getElementById('overlay');
@@ -40,14 +43,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize header state
     toggleHeader();
 
-
     // Wait for 3 seconds before hiding the loading text and showing content
-    setTimeout(function() {
+    setTimeout(function () {
         const loadingText = document.querySelector('.loading-text');
         if (loadingText) {
             loadingText.style.display = 'none';
+            document.body.classList.remove('no-scroll'); // Remove no-scroll to enable scrolling
         }
-        
+
         // Fade in the header and main content
         const header = document.querySelector('header');
         const main = document.querySelector('main');
@@ -55,6 +58,58 @@ document.addEventListener('DOMContentLoaded', function () {
             header.style.opacity = 1;
             main.style.opacity = 1;
         }
+
+        document.body.classList.remove('no-scroll');
     }, 3000);
+
+    const carousel = document.querySelector('.carousel');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        isDown = false;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Fungsi untuk menutup drawer
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.style.display = 'none';
+        document.body.classList.remove('drawer-open');
+    }
+
+    // Menambahkan event listener ke overlay
+    overlay.addEventListener('click', closeDrawer);
+
+    // Menutup drawer ketika klik di luar drawer
+    document.addEventListener('click', function (event) {
+        var isClickInsideDrawer = drawer.contains(event.target);
+        var isClickInsideMenuToggle = document.getElementById('menuToggle').contains(event.target);
+
+        // Jika klik di luar drawer dan bukan pada tombol menu, tutup drawer
+        if (!isClickInsideDrawer && !isClickInsideMenuToggle) {
+            closeDrawer();
+        }
+    });
+
+
 
 });
