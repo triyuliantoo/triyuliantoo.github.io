@@ -7,6 +7,18 @@
     --header-height: 50px;
 }
 
+#portfolio-list {
+    display: none;
+}
+
+#maintenance-message {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    margin: 20px 0;
+}
+
 #themeToggle {
     margin-right: 20px;
 }
