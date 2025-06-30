@@ -411,3 +411,22 @@ body {
         left: 100%;
     }
 }
+
+.loading-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff; /* atau warna gelap sesuai tema */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.loading {
+    overflow: hidden !important;
+    height: 100vh !important;
+    position: fixed !important; /* cegah mobile scroll/zoom saat loading */
+    width: 100vw !important;
+}
