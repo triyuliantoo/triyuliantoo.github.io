@@ -6,10 +6,39 @@ document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('themeToggle');
     const header = document.querySelector('header');
 
-    document.body.classList.add('loading');
+    async function loadHtmlPartial(url, containerId) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch: ${response.status}`);
+            }
+            const text = await response.text();
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = text;
+            }
+        } catch (error) {
+            console.error(`Error loading partial ${url}:`, error);
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = `<p style="color:red; text-align:center;">Gagal memuat bagian ini.</p>`;
+            }
+        }
+    }
 
-    setTimeout(function () {
+    async function loadAllContent() {
+        document.body.classList.add('loading');
         const loadingOverlay = document.querySelector('.loading-overlay');
+        if (loadingOverlay) loadingOverlay.style.display = 'flex';
+
+        const loadPromises = [
+            loadHtmlPartial('_aboutMe.html', 'aboutMe-container'),
+            loadHtmlPartial('_workHistory.html', 'workHistory-container'),
+            loadHtmlPartial('_portfolio.html', 'portfolio-container')
+        ];
+
+        await Promise.all(loadPromises);
+
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
         }
@@ -21,10 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
             header.style.opacity = 1;
             main.style.opacity = 1;
         }
-    }, 3000);
+    }
+
+    loadAllContent();
 
     function toggleHeader() {
-        header.classList.add('scrolled');
+        _header.classList.add('scrolled');
     }
 
     window.addEventListener('scroll', toggleHeader);
@@ -56,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', function () {
         if (window.scrollY > 200) {
             backToTop.style.display = 'block';
+            S
         } else {
             backToTop.style.display = 'none';
         }
