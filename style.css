@@ -101,7 +101,6 @@ main {
     }
 
     main {
-        padding: 5px;
         padding-top: 55px;
     }
 
@@ -110,32 +109,12 @@ main {
         align-items: flex-start;
     }
 
-    h1,
-    h2,
-    h3,
-    p {
-        font-size: smaller;
-    }
-
     .icon-button {
         font-size: 20px;
     }
 
     .carousel-item {
         width: 90%;
-    }
-
-    .timeline-event {
-        padding-left: 25px;
-    }
-
-    .timeline-event-icon {
-        width: 15px;
-        height: 15px;
-    }
-
-    .timeline-event-content {
-        margin-left: 5px;
     }
 }
 
