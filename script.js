@@ -6,20 +6,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const themeToggle = document.getElementById('themeToggle');
     const header = document.querySelector('header');
 
-    // 1. Activate loading mode: body cannot be scrolled
     document.body.classList.add('loading');
 
-    // 2. Loading: wait 3 seconds, then hide loading overlay and enable scroll again
-    setTimeout(function() {
-        // Hide/remove the loading overlay
+    setTimeout(function () {
         const loadingOverlay = document.querySelector('.loading-overlay');
         if (loadingOverlay) {
             loadingOverlay.style.display = 'none';
         }
-        // Allow scrolling again
         document.body.classList.remove('loading');
 
-        // Fade in the header and main content
         const header = document.querySelector('header');
         const main = document.querySelector('main');
         if (header && main) {
@@ -28,12 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }, 3000);
 
-    // Show the header after scroll (always visible after first scroll)
     function toggleHeader() {
         header.classList.add('scrolled');
     }
 
-    // Event listeners for navigation drawer
     window.addEventListener('scroll', toggleHeader);
     document.getElementById('menuToggle').addEventListener('click', () => {
         drawer.classList.toggle('open');
@@ -47,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.classList.remove('drawer-open');
     });
 
-    // Theme toggling (dark/light)
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         const icon = themeToggle.querySelector('i');
@@ -55,16 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
         icon.classList.toggle('fa-sun');
     });
 
-    // Scroll to top button functionality
     backToTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Initialize header state
     toggleHeader();
 
-    // Show/hide backToTop button on scroll
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 200) {
             backToTop.style.display = 'block';
         } else {
@@ -72,18 +61,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Portfolio Modal Logic
-    window.showModal = function(id) {
+    window.showModal = function (id) {
         var modal = document.getElementById('portfolioModal');
         var content = document.getElementById('modalContent');
         modal.style.display = 'block';
         content.innerHTML = 'Project details for Project ' + id;
     };
-    window.closeModal = function() {
+    window.closeModal = function () {
         document.getElementById('portfolioModal').style.display = 'none';
     };
-    // Close modal if clicking outside modal content
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         var modal = document.getElementById('portfolioModal');
         if (event.target == modal) {
             modal.style.display = "none";
