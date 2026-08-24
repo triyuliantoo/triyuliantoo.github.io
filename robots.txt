@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://triyuliantoo.github.io/sitemap.xml
