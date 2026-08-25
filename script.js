@@ -17,6 +17,15 @@
   const introDialog = document.getElementById('introDialog');
   const introFullCopy = document.querySelector('.intro-full-copy');
   const introClose = document.querySelector('.intro-close');
+  const portfolioDialog = document.getElementById('portfolioDialog');
+  const portfolioOpeners = [...document.querySelectorAll('[data-open-portfolio]')];
+  const portfolioClose = document.querySelector('.portfolio-close');
+  const portfolioScreen = document.getElementById('portfolioScreen');
+  const portfolioCaption = document.getElementById('portfolioCaption');
+  const portfolioCounter = document.getElementById('portfolioCounter');
+  const portfolioThumbs = [...document.querySelectorAll('.portfolio-thumb')];
+  const galleryPrevious = document.querySelector('.gallery-prev');
+  const galleryNext = document.querySelector('.gallery-next');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const buildVersion = document.documentElement.dataset.build || 'development';
   const buildStorageKey = 'tri-profile-build-version';
@@ -73,6 +82,7 @@
     about: 'JUMP TO PROFILE!',
     experience: 'RUN THE QUEST LOG!',
     skills: 'LOADOUT READY!',
+    portfolio: 'NEW CARD UNLOCKED!',
     contact: 'QUEST CLEAR!'
   };
 
@@ -84,6 +94,8 @@
   let soundOn = false;
   let audioContext;
   let introReturnFocus = null;
+  let portfolioReturnFocus = null;
+  let portfolioSlideIndex = 0;
 
   const indexForId = (id) => sections.findIndex((section) => section.id === id);
   const hashId = window.location.hash.replace('#', '');
@@ -145,6 +157,10 @@
     if (action === 'shoot') {
       makeTone(880, .06, 'sawtooth');
       makeTone(440, .09, 'square', .05);
+    } else if (action === 'collect') {
+      makeTone(392, .08);
+      makeTone(523, .08, 'square', .08);
+      makeTone(784, .14, 'square', .16);
     } else if (action === 'victory') {
       makeTone(523, .1);
       makeTone(659, .1, 'square', .1);
@@ -224,6 +240,60 @@
     });
   }
 
+  function setPortfolioSlide(index, direction = 'forward') {
+    if (!portfolioThumbs.length || !portfolioScreen || !portfolioCaption || !portfolioCounter) return;
+    const normalizedIndex = (index + portfolioThumbs.length) % portfolioThumbs.length;
+    const target = portfolioThumbs[normalizedIndex];
+    portfolioSlideIndex = normalizedIndex;
+
+    portfolioThumbs.forEach((thumb, thumbIndex) => {
+      const active = thumbIndex === normalizedIndex;
+      thumb.classList.toggle('is-active', active);
+      thumb.setAttribute('aria-pressed', String(active));
+    });
+
+    portfolioScreen.classList.remove('slide-forward', 'slide-backward');
+    void portfolioScreen.offsetWidth;
+    portfolioScreen.src = target.dataset.image;
+    portfolioScreen.alt = target.dataset.alt;
+    portfolioCaption.textContent = target.dataset.caption;
+    portfolioCounter.textContent = String(normalizedIndex + 1).padStart(2, '0');
+    portfolioScreen.classList.add(direction === 'backward' ? 'slide-backward' : 'slide-forward');
+  }
+
+  function openPortfolioDialog(event) {
+    if (!portfolioDialog || !portfolioClose) return;
+    portfolioReturnFocus = event?.currentTarget instanceof HTMLElement ? event.currentTarget : document.activeElement;
+    portfolioDialog.hidden = false;
+    document.body.classList.add('portfolio-open');
+    setPortfolioSlide(portfolioSlideIndex);
+    portfolioThumbs.forEach((thumb) => {
+      const image = new Image();
+      image.src = thumb.dataset.image;
+    });
+    portfolioClose.focus({ preventScroll: true });
+  }
+
+  function closePortfolioDialog(restoreFocus = true) {
+    if (!portfolioDialog) return;
+    portfolioDialog.hidden = true;
+    document.body.classList.remove('portfolio-open');
+    if (restoreFocus && portfolioReturnFocus instanceof HTMLElement) portfolioReturnFocus.focus({ preventScroll: true });
+  }
+
+  portfolioOpeners.forEach((opener) => opener.addEventListener('click', openPortfolioDialog));
+  if (portfolioClose) portfolioClose.addEventListener('click', () => closePortfolioDialog());
+  if (galleryPrevious) galleryPrevious.addEventListener('click', () => setPortfolioSlide(portfolioSlideIndex - 1, 'backward'));
+  if (galleryNext) galleryNext.addEventListener('click', () => setPortfolioSlide(portfolioSlideIndex + 1));
+  portfolioThumbs.forEach((thumb, thumbIndex) => {
+    thumb.addEventListener('click', () => setPortfolioSlide(thumbIndex, thumbIndex < portfolioSlideIndex ? 'backward' : 'forward'));
+  });
+  if (portfolioDialog) {
+    portfolioDialog.addEventListener('click', (event) => {
+      if (event.target === portfolioDialog) closePortfolioDialog();
+    });
+  }
+
   window.requestAnimationFrame(updateIntroReadMore);
   window.addEventListener('load', updateIntroReadMore, { once: true });
   let introResizeTimer;
@@ -243,6 +313,30 @@
   nextButton.addEventListener('click', () => goToStage(currentIndex + 1));
 
   document.addEventListener('keydown', (event) => {
+    if (portfolioDialog && !portfolioDialog.hidden) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closePortfolioDialog();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        setPortfolioSlide(portfolioSlideIndex + 1);
+      } else if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        setPortfolioSlide(portfolioSlideIndex - 1, 'backward');
+      } else if (event.key === 'Tab') {
+        const focusable = [...portfolioDialog.querySelectorAll('button:not([disabled]), a[href]')];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      return;
+    }
     if (introDialog && !introDialog.hidden) {
       if (event.key === 'Escape') {
         event.preventDefault();
@@ -273,7 +367,7 @@
   });
 
   window.addEventListener('wheel', (event) => {
-    if (introDialog && !introDialog.hidden) return;
+    if ((introDialog && !introDialog.hidden) || (portfolioDialog && !portfolioDialog.hidden)) return;
     if (wheelCooldown || transitioning || Math.abs(event.deltaY) < 24) return;
     wheelCooldown = true;
     goToStage(currentIndex + (event.deltaY > 0 ? 1 : -1));
@@ -286,7 +380,7 @@
   }, { passive: true });
 
   window.addEventListener('touchend', (event) => {
-    if (introDialog && !introDialog.hidden) return;
+    if ((introDialog && !introDialog.hidden) || (portfolioDialog && !portfolioDialog.hidden)) return;
     const deltaX = event.changedTouches[0].clientX - touchStartX;
     const deltaY = event.changedTouches[0].clientY - touchStartY;
     const horizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
