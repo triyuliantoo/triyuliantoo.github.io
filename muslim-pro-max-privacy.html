@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Muslim Pro Max Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for the Muslim Pro Max Android application.">
+  <style>
+    :root { color-scheme: light dark; --green:#087565; --card:#ffffff; --text:#10211e; --muted:#586965; --bg:#f5f8f5; --line:#dce6e1; }
+    @media (prefers-color-scheme:dark) { :root { --green:#72ddc0; --card:#0b2924; --text:#edf8f4; --muted:#b6cac4; --bg:#061d19; --line:#244a41; } }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(880px,calc(100% - 32px)); margin:32px auto; padding:clamp(24px,5vw,56px); background:var(--card); border:1px solid var(--line); border-radius:24px; box-shadow:0 16px 48px #001d1512; }
+    h1 { margin:0 0 4px; font-size:clamp(2rem,5vw,3.25rem); line-height:1.1; }
+    h2 { margin-top:2.2rem; font-size:1.35rem; }
+    h3 { margin-top:1.5rem; font-size:1.05rem; }
+    p,li { max-width:75ch; }
+    .updated { color:var(--muted); margin-top:0; }
+    .summary { padding:18px 20px; border-left:4px solid var(--green); background:color-mix(in srgb,var(--green) 8%,transparent); border-radius:12px; }
+    a { color:var(--green); }
+    table { width:100%; border-collapse:collapse; display:block; overflow-x:auto; }
+    th,td { padding:12px; border:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { background:color-mix(in srgb,var(--green) 8%,transparent); }
+    code { font-size:.9em; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy for Muslim Pro Max</h1>
+  <p class="updated"><strong>Last updated:</strong> October 27, 2026</p>
+  <p class="summary">Muslim Pro Max is an ad-free Islamic utility application. It has no user accounts, advertising SDKs, or behavioral analytics SDKs. The app uses location only when you request location-based prayer times or Qibla direction.</p>
+
+  <h2>1. Developer and scope</h2>
+  <p>This policy applies to the Muslim Pro Max Android application (package <code>id.anekaruangkode.muslimpro</code>), developed by Tri Yulianto / Aneka Ruang Kode ("we", "our", or "us").</p>
+
+  <h2>2. Data the app processes</h2>
+  <table>
+    <thead><tr><th>Data</th><th>Purpose</th><th>Handling</th></tr></thead>
+    <tbody>
+      <tr><td>Approximate or precise location, when you grant permission</td><td>Determine prayer times, timezone, nearby city, and Qibla direction</td><td>Coordinates and the selected location are stored on your device. For supported Indonesian cities, the app requests schedules using a city identifier. For other locations, coordinates may be sent over HTTPS to the AlAdhan prayer-time service. Android's geocoding service may process coordinates to determine a place name.</td></tr>
+      <tr><td>App preferences and activity</td><td>Remember language, theme, calculation settings, notification choices, bookmarks, reading progress, and selected prayer location</td><td>Stored locally on your device. We do not operate an account system or receive this information on our own servers.</td></tr>
+      <tr><td>Network and request information</td><td>Download Quran text, translations, tajweed content, and prayer schedules</td><td>Content providers necessarily receive standard network information such as IP address, request time, and requested content. The app does not add advertising identifiers or account identifiers.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3. Third-party services</h2>
+  <p>The app may connect to the following services solely to provide requested content or calculations:</p>
+  <ul>
+    <li><strong>AlAdhan</strong> — prayer-time calculations for coordinates outside supported city schedules.</li>
+    <li><strong>MyQuran/Kemenag schedule service</strong> — Indonesian city lists and prayer schedules.</li>
+    <li><strong>EQuran.id</strong> — Quran text and surah content.</li>
+    <li><strong>AlQuran Cloud</strong> — Quran translations.</li>
+    <li><strong>Muslim Pro Max content service</strong> — tajweed annotations.</li>
+    <li><strong>Android system geocoding</strong> — converts a device location into a readable place name when available.</li>
+  </ul>
+  <p>These providers may process standard network data under their own privacy terms. We do not sell personal information or share it for advertising.</p>
+
+  <h2>4. Device permissions</h2>
+  <ul>
+    <li><strong>Location:</strong> optional and requested in context for location-based prayer times and Qibla direction. Manual city selection remains available.</li>
+    <li><strong>Notifications and exact alarms:</strong> optional and used for prayer reminders and adhan alerts at the selected times.</li>
+    <li><strong>Foreground service and audio controls:</strong> used only while adhan or other requested audio is playing.</li>
+    <li><strong>Boot completed:</strong> used to restore enabled prayer reminders after device restart or app update.</li>
+    <li><strong>Internet and network state:</strong> used to retrieve Quran content and prayer schedules.</li>
+  </ul>
+
+  <h2>5. Retention and deletion</h2>
+  <p>Local preferences, bookmarks, reading progress, schedules, and the selected location remain on your device until you change them, clear the application's storage, or uninstall the app. Muslim Pro Max has no user account and therefore has no server-side account record to delete. You can revoke location or notification permissions at any time in Android Settings.</p>
+
+  <h2>6. Security</h2>
+  <p>The app uses HTTPS for network requests and limits requested permissions to its stated functionality. No method of electronic transmission is completely secure, but we take reasonable steps to minimize data use and exposure.</p>
+
+  <h2>7. Children</h2>
+  <p>The app is intended for a general audience and is not specifically directed to children under 13. We do not knowingly collect children's personal information through an account, advertising, or analytics system.</p>
+
+  <h2>8. Changes</h2>
+  <p>We may update this policy when the app's functionality or legal requirements change. The effective date at the top of this page will be updated when changes are made.</p>
+
+  <h2>9. Contact</h2>
+  <p>Questions or privacy requests can be sent to <a href="mailto:triyulianto@gmail.com">triyulianto@gmail.com</a>.</p>
+</main>
+</body>
+</html>
