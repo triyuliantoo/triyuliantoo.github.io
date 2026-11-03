@@ -28,8 +28,8 @@
 <body>
 <main>
   <h1>Privacy Policy for Muslim Pro Max</h1>
-  <p class="updated"><strong>Last updated:</strong> October 27, 2026</p>
-  <p class="summary">Muslim Pro Max is an ad-free Islamic utility application. It has no user accounts, advertising SDKs, or behavioral analytics SDKs. The app uses location only when you request location-based prayer times or Qibla direction.</p>
+  <p class="updated"><strong>Last updated:</strong> November 3, 2026</p>
+  <p class="summary">Muslim Pro Max is an ad-free Islamic utility application. It has no user accounts, advertising SDKs, or behavioral analytics SDKs. The app reads device location when you request location-based prayer times or Qibla direction. Your saved location may also be used to refresh the prayer schedules you have enabled.</p>
 
   <h2>1. Developer and scope</h2>
   <p>This policy applies to the Muslim Pro Max Android application (package <code>id.anekaruangkode.muslimpro</code>), developed by Tri Yulianto / Aneka Ruang Kode ("we", "our", or "us").</p>
@@ -40,7 +40,7 @@
     <tbody>
       <tr><td>Approximate or precise location, when you grant permission</td><td>Determine prayer times, timezone, nearby city, and Qibla direction</td><td>Coordinates and the selected location are stored on your device. For supported Indonesian cities, the app requests schedules using a city identifier. For other locations, coordinates may be sent over HTTPS to the AlAdhan prayer-time service. Android's geocoding service may process coordinates to determine a place name.</td></tr>
       <tr><td>App preferences and activity</td><td>Remember language, theme, calculation settings, notification choices, bookmarks, reading progress, and selected prayer location</td><td>Stored locally on your device. We do not operate an account system or receive this information on our own servers.</td></tr>
-      <tr><td>Network and request information</td><td>Download Quran text, translations, tajweed content, and prayer schedules</td><td>Content providers necessarily receive standard network information such as IP address, request time, and requested content. The app does not add advertising identifiers or account identifiers.</td></tr>
+      <tr><td>Network and request information</td><td>Download Quran text, translations, tajweed content, audio recitations, and prayer schedules</td><td>Content providers necessarily receive standard network information such as IP address, request time, and requested content. The app does not add advertising identifiers or account identifiers.</td></tr>
     </tbody>
   </table>
 
@@ -49,7 +49,7 @@
   <ul>
     <li><strong>AlAdhan</strong> — prayer-time calculations for coordinates outside supported city schedules.</li>
     <li><strong>MyQuran/Kemenag schedule service</strong> — Indonesian city lists and prayer schedules.</li>
-    <li><strong>EQuran.id</strong> — Quran text and surah content.</li>
+    <li><strong>EQuran.id</strong> — Quran text, surah content, and requested audio recitations.</li>
     <li><strong>AlQuran Cloud</strong> — Quran translations.</li>
     <li><strong>Muslim Pro Max content service</strong> — tajweed annotations.</li>
     <li><strong>Android system geocoding</strong> — converts a device location into a readable place name when available.</li>
@@ -60,13 +60,14 @@
   <ul>
     <li><strong>Location:</strong> optional and requested in context for location-based prayer times and Qibla direction. Manual city selection remains available.</li>
     <li><strong>Notifications and exact alarms:</strong> optional and used for prayer reminders and adhan alerts at the selected times.</li>
-    <li><strong>Foreground service and audio controls:</strong> used only while adhan or other requested audio is playing.</li>
+    <li><strong>Foreground service and audio controls:</strong> used for user-requested Surah audio downloads with progress and Cancel controls, and for user-enabled adhan playback with a Stop control. Android may defer background work according to its network, battery, and scheduling limits.</li>
     <li><strong>Boot completed:</strong> used to restore enabled prayer reminders after device restart or app update.</li>
-    <li><strong>Internet and network state:</strong> used to retrieve Quran content and prayer schedules.</li>
+    <li><strong>Internet and network state:</strong> used to retrieve Quran content, requested audio files, and prayer schedules.</li>
   </ul>
 
   <h2>5. Retention and deletion</h2>
-  <p>Local preferences, bookmarks, reading progress, schedules, and the selected location remain on your device until you change them, clear the application's storage, or uninstall the app. Muslim Pro Max has no user account and therefore has no server-side account record to delete. You can revoke location or notification permissions at any time in Android Settings.</p>
+  <p>Surah audio is downloaded when you tap Play and is kept in private internal app storage for offline reuse. Downloaded audio survives normal app updates and is excluded from cloud backup. Clearing app storage or uninstalling the app removes these files.</p>
+  <p>Local preferences, bookmarks, reading progress, schedules, and the selected location remain on your device until you change them, clear the application's storage, or uninstall the app. Muslim Pro Max has no user account and therefore has no server-side account record to delete. You can revoke location or notification permissions at any time in Android Settings. Standard request information processed by third-party providers is subject to their own retention policies; we do not guarantee that provider-held data is automatically deleted within a fixed period.</p>
 
   <h2>6. Security</h2>
   <p>The app uses HTTPS for network requests and limits requested permissions to its stated functionality. No method of electronic transmission is completely secure, but we take reasonable steps to minimize data use and exposure.</p>
